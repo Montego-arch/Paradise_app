@@ -114,21 +114,21 @@ doc_events = {
 # ---------------
 
 # scheduler_events = {
-#	"all": [
-#		"paradise_app.tasks.all"
-#	],
-#	"daily": [
-#		"paradise_app.tasks.daily"
-#	],
-#	"hourly": [
-#		"paradise_app.tasks.hourly"
-#	],
-#	"weekly": [
-#		"paradise_app.tasks.weekly"
-#	]
-#	"monthly": [
-#		"paradise_app.tasks.monthly"
-#	]
+# 	"all": [
+# 		"paradise_app.tasks.all"
+# 	],
+# 	"daily": [
+# 		"paradise_app.tasks.daily"
+# 	],
+# 	"hourly": [
+# 		"paradise_app.tasks.hourly"
+# 	],
+# 	"weekly": [
+# 		"paradise_app.tasks.weekly"
+# 	]
+# 	"monthly": [
+# 		"paradise_app.tasks.monthly"
+# 	]
 # }
 
 # Testing
