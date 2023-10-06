@@ -11,7 +11,6 @@ def execute(filters=None):
 	return get_columns(), get_data(filters)
 
 def get_data(filters):
-	print(f"\n\n\n{filters}\n\n\n\n")
 	_from, to = filters.get('from'), filters.get('to') #date range
 	#conditions
 	conditions = " AND 1=1 "
@@ -19,7 +18,6 @@ def get_data(filters):
 	if(filters.get('agent')):conditions += f" AND agent='{filters.get('agent')}' "
 	if(filters.get('status')):conditions += f" AND status='{filters.get('status')}' "
 
-	print(f"\n\n\n{conditions}\n\n\n\n")
 	data = frappe.db.sql(f"""SELECT name, property_name, address, property_type, status, property_price, discount, grand_total, agent, agent_name FROM `tabProperty` WHERE (creation BETWEEN '{_from}' AND '{to}') {conditions};""")
 	return data
 			  

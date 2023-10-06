@@ -5,10 +5,20 @@ import frappe
 from frappe.model.document import Document
 
 class Property(Document):
+    
+
     def after_insert(self):
-        frappe.msgprint((f"Document {self.name} inserted successfully"));
+           frappe.msgprint((f'Document {self.name} inserted successfully'));
+        
+        
 	# validate
-	# def validate(self):
+    def validate(self):
+        try:
+            frappe.db.sql("""SELECT name, tenant, friends FROM `tabProperty`;""")
+        except Exception as e:
+            error = frappe.log_error(frappe.get_traceback(), f"{e}")
+            frappe.msgprint((f"An error occurred see <a href='/app/error-log/{error.name}'><b>{error.name}</b></a>"));
+                # print(e)
 		# if(self.property_type=="Flat"):
 			
 		# 	for amenity in self.amenities:
