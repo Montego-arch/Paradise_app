@@ -101,7 +101,7 @@
                   </table>
                 </div>
               </p>
-              <div class="row no-gutters mt-5">
+              <!-- <div class="row no-gutters mt-5">
                 <div class="col-12">
                   <h2 class="h4 text-black mb-3">Gallery</h2>
                 </div>
@@ -141,7 +141,7 @@
                 <div class="col-sm-6 col-md-4 col-lg-3">
                   <a href="images/img_4.jpg" class="image-popup gal-item"><img src= "/assets/paradise_app/homeland/images/img_4.jpg" alt="Image" class="img-fluid"></a>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-lg-4">
@@ -168,10 +168,10 @@
               </form>
             </div>
 
-            <div class="bg-white widget border rounded">
+            <!-- <div class="bg-white widget border rounded">
               <h3 class="h4 text-black widget-title mb-3">Paragraph</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit qui explicabo, libero nam, saepe eligendi. Molestias maiores illum error rerum. Exercitationem ullam saepe, minus, reiciendis ducimus quis. Illo, quisquam, veritatis.</p>
-            </div>
+            </div> -->
 
           </div>
           
@@ -191,27 +191,29 @@
         </div>
       
         <div class="row mb-5">
+
+          {% for property in related_properties %}
+
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
+              <a href="/property/details/{{property.name}}" class="property-thumbnail">
                 <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
+                  <span class="offer-type bg-{% if property.status=='Rent' %}success{% elif property.status=='Sale' %}danger{% else %}warning{% endif %}">{{property.status}}</span>
                 </div>
-                <img src= "/assets/paradise_app/homeland/images/img_1.jpg" alt="Image" class="img-fluid">
+                <img src="{{property.image}}" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                <h2 class="property-title"><a href="property-details.html">625 S. Berendo St</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 625 S. Berendo St Unit 607 Los Angeles, CA 90005</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$2,265,500</strong>
+                <h2 class="property-title"><a href="/property/details/{{property.name}}">{{property.property_name}}</a></h2>
+                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{property.address}}</span>
+                <strong class="property-price text-primary mb-3 d-block text-success">{{ frappe.format(property.grand_total, {'fieldtype': 'Currency'}) }}</strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
+                  <!-- <li>
                     <span class="property-specs">Beds</span>
                     <span class="property-specs-number">2 <sup>+</sup></span>
                     
-                  </li>
-                  <li>
+                  </li> -->
+                  <!-- <li>
                     <span class="property-specs">Baths</span>
                     <span class="property-specs-number">2</span>
                     
@@ -220,14 +222,18 @@
                     <span class="property-specs">SQ FT</span>
                     <span class="property-specs-number">7,000</span>
                     
-                  </li>
+                  </li> -->
                 </ul>
-
+    
               </div>
             </div>
           </div>
+    
+          {% endfor %}
+            </div>
+          </div>
 
-          <div class="col-md-6 col-lg-4 mb-4">
+          <!-- <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
               <a href="property-details.html" class="property-thumbnail">
                 <div class="offer-type-wrap">
@@ -261,9 +267,9 @@
 
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-md-6 col-lg-4 mb-4">
+          <!-- <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
               <a href="property-details.html" class="property-thumbnail">
                 <div class="offer-type-wrap">
@@ -296,7 +302,7 @@
 
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
