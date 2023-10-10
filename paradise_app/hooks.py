@@ -1,4 +1,5 @@
 from . import __version__ as app_version
+from paradise_app.route import routes
 
 app_name = "paradise_app"
 app_title = "Paradise App"
@@ -48,6 +49,9 @@ doctype_js = {
 # role_home_page = {
 #	"Role": "home_page"
 # }
+#WEBSITE_ROUTE_RULES
+
+website_route_rules = routes
 
 # Generators
 # ----------

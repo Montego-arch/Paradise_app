@@ -77,7 +77,7 @@ frappe.ui.form.on('Property', {
 					// code snippet
 					console.log(r);
 					if(r.message.length>0){
-						let header = `<h3>Below properties has ${property_type}</h3>`;
+						let header = `<h3>Below properties is of type ${property_type}</h3>`;
 						let body = ``;
 						r.message.forEach(d=>{
 							let cont = `<p>Name: ${d.name}: <a href='/app/property/${d.name}'>Visit</a></P>`;

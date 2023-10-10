@@ -30,9 +30,25 @@
     <link rel="stylesheet" href="/assets/paradise_app/homeland/css/aos.css">
 
     <link rel="stylesheet" href="/assets/paradise_app/homeland/css/style.css">
-    
-  </head>
-  <body>
+    <!-- FRAPPE RESOURCES HEAD -->
+    <link rel="icon" href="/assets/erpnext/images/erpnext-favicon.svg" type="image/x-icon">
+	<link type="text/css" rel="stylesheet" href="/assets/css/desk.min.css?ver=1696680089.0">
+    <link type="text/css" rel="stylesheet" href="/assets/css/erpnext.css?ver=1696680089.0">
+    <script>
+		window.frappe = {};
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ (frappe.socketio_port or 'null') }};
+		window.show_language_picker = {{ show_language_picker }};
+	</script>
+    <!-- FRAPPE RESOURCES HEAD -->
+  
+</head>
+  <body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}}"></body>>
+
   
   <div class="site-loader"></div>
   
@@ -178,6 +194,17 @@
 <script src="/assets/paradise_app/homeland/js/aos.js"></script>
 
 <script src="/assets/paradise_app/homeland/js/main.js"></script>
+
+<!-- frappe resources -->
+<script type="text/javascript" src="/assets/js/libs.min.js?ver=1696680089.0"></script>		
+<script type="text/javascript" src="/assets/js/desk.min.js?ver=1696680089.0"></script>
+<!-- <script type="text/javascript" src="/assets/js/list.min.js?ver=1696680089.0"></script> -->
+<!-- <script type="text/javascript" src="/assets/js/form.min.js?ver=1696680089.0"></script> -->
+<script type="text/javascript" src="/assets/js/control.min.js?ver=1696680089.0"></script>
+<!-- <script type="text/javascript" src="/assets/js/report.min.js?ver=1696680089.0"></script> -->
+<script type="text/javascript" src="/assets/js/erpnext.min.js?ver=1696680089.0"></script>
+
+<script>frappe.csrf_token = "{{frappe.session.csrf_token}}";</script>
   
 </body>
 </html>
