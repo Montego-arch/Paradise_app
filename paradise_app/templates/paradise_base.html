@@ -47,7 +47,7 @@
     <!-- FRAPPE RESOURCES HEAD -->
   
 </head>
-  <body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}}"></body>>
+<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {% endif -%} class="{{ body_class or ''}}"></body>
 
   
   <div class="site-loader"></div>
@@ -194,6 +194,7 @@
 <script src="/assets/paradise_app/homeland/js/aos.js"></script>
 
 <script src="/assets/paradise_app/homeland/js/main.js"></script>
+{% block script %}{% endblock %}
 
 <!-- frappe resources -->
 <script type="text/javascript" src="/assets/js/libs.min.js?ver=1696680089.0"></script>		

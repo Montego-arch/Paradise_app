@@ -59,8 +59,8 @@
               </div>
               <div class="row mb-5">
                 <div class="col-md-6 col-lg-3 text-center border-bottom border-top py-3">
-                  <span class="d-inline-block text-black mb-0 caption-text">Property Code</span>
-                  <strong class="d-block">{{property.name}}</strong>
+                  <span class="d-inline-block text-black mb-0 caption-text">Code</span>
+                  <strong class="d-block" id="property-name">{{property.name}}</strong>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center border-bottom border-top py-3">
                   <span class="d-inline-block text-black mb-0 caption-text">Home Type</span>
@@ -163,12 +163,12 @@
                   <input type="text" id="phone" class="form-control" value="{{agent.phone}}" disabled>
                 </div>
                 <div class="form-group">
-                  <input type="submit" id="phone" class="btn btn-primary" value="Send Message">
+                  <input type="button" id="contact-agent" class="btn btn-primary" value="Contact Agent">
                 </div>
               </form>
             </div>
-
-            <!-- <div class="bg-white widget border rounded">
+<!-- 
+            <div class="bg-white widget border rounded">
               <h3 class="h4 text-black widget-title mb-3">Paragraph</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit qui explicabo, libero nam, saepe eligendi. Molestias maiores illum error rerum. Exercitationem ullam saepe, minus, reiciendis ducimus quis. Illo, quisquam, veritatis.</p>
             </div> -->
@@ -306,4 +306,9 @@
         </div>
       </div>
 
+{% endblock %}
+
+
+{% block script %}
+<script src="/assets/paradise_app/www/js/details.js"></script>
 {% endblock %}
