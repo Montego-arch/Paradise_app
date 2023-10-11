@@ -10,3 +10,31 @@ def sendmail(doc, recipients, msg, title, attachments=None):
     if attachments:email_args['attachements']=attachments
     #send mail
     frappe.enqueue(method=frappe.sendmail, queue='short', timeout=300, **email_args)
+
+
+def paginate(doctype, page=0):
+    prev, next = 0, 0
+    conditions = " "
+    query = f"""SELECT name, property_name, status, address, grand_total, 
+                image FROM `tab{doctype}` {conditions} ORDER BY creation DESC """
+    
+    if (page):
+        page = int(page)
+        properties = frappe.db.sql(query+f"""LIMIT {(page*4)-4}, 4;""", as_dict=True)
+        next_set = frappe.db.sql(query+f"""LIMIT {page*4}, 4;""", as_dict=True)
+        if(next_set):
+            prev, next = page-1, page+1
+        else:
+            prev, next = page-1, 0
+    else:
+        count = frappe.db.sql(f"""SELECT COUNT(name) as count FROM `tabProperty`;""", as_dict=True)[0].count
+        if (count>4):
+            prev, next = 0, 2
+        else:
+            pass
+        properties = frappe.db.sql(query+"""LIMIT 4;""", as_dict=True)
+    return {
+        'properties': properties,
+        'prev':prev,
+            'next':next,
+    }
