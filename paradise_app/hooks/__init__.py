@@ -1,5 +1,7 @@
-from . import __version__ as app_version
-from paradise_app.route import routes
+from .. import __version__ as app_version
+from .route import routes
+from .jinja import jenvs
+from .doc_events import doc_events
 
 app_name = "paradise_app"
 app_title = "Paradise App"
@@ -52,6 +54,7 @@ doctype_js = {
 #WEBSITE_ROUTE_RULES
 
 website_route_rules = routes
+jenv = jenvs
 
 # Generators
 # ----------
@@ -101,18 +104,7 @@ website_route_rules = routes
 # ---------------
 # Hook on document methods and events
 
-doc_events = {
-	# "*": {
-	# 	"on_update": "method",
-	# 	"on_cancel": "method",
-	# 	"on_trash": "method"
-	# },
-    "Property": {
-        "validate": "paradise_app.paradise_app.doctype.property.events.validate",
-        "on_update": "paradise_app.paradise_app.doctype.property.events.on_update",
-        "after_insert": "paradise_app.paradise_app.doctype.property.events.after_insert"
-	}
-}
+doc_events = doc_events
 
 # Scheduled Tasks
 # ---------------
