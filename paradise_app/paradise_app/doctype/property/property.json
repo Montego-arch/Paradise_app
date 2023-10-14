@@ -10,10 +10,10 @@
   "property_name",
   "city",
   "property_type",
+  "column_break_bb5uh",
   "property_price",
   "discount",
   "address",
-  "column_break_bb5uh",
   "section_break_0",
   "map",
   "section_break_mjet9",
@@ -26,7 +26,8 @@
   "section_break_ksotv",
   "amenities",
   "pricing_section",
-  "grand_total"
+  "grand_total",
+  "amended_from"
  ],
  "fields": [
   {
@@ -143,11 +144,21 @@
   {
    "fieldname": "section_break_0",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Property",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2023-10-14 08:52:59.326813",
+ "modified": "2023-10-14 13:45:06.208897",
  "modified_by": "Administrator",
  "module": "Paradise App",
  "name": "Property",
