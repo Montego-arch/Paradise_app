@@ -8,12 +8,15 @@
  "engine": "InnoDB",
  "field_order": [
   "property_name",
-  "address",
   "city",
   "property_type",
   "property_price",
   "discount",
+  "address",
   "column_break_bb5uh",
+  "section_break_0",
+  "map",
+  "section_break_mjet9",
   "image",
   "agent",
   "agent_name",
@@ -127,11 +130,24 @@
    "label": "City",
    "options": "City",
    "reqd": 1
+  },
+  {
+   "fieldname": "map",
+   "fieldtype": "Geolocation",
+   "label": "Map"
+  },
+  {
+   "fieldname": "section_break_mjet9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_0",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-11 15:54:40.426278",
+ "modified": "2023-10-14 08:52:59.326813",
  "modified_by": "Administrator",
  "module": "Paradise App",
  "name": "Property",

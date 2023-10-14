@@ -54,7 +54,7 @@ frappe.ui.form.on('Property', {
 			frm.refresh_field('amenities');
 		}
 
-	},
+	  }, //END SETUP
 	refresh: function(frm) {
 		frm.add_custom_button('Say Hi', () => {
 			frappe.prompt('Address', ({ value }) => {
@@ -94,7 +94,7 @@ frappe.ui.form.on('Property', {
 			
 		}, "Actions");
 		
-	},
+	},//END REFRESH
 	property_price: function(frm){
 		frm.compute_total(frm);
 
@@ -103,6 +103,27 @@ frappe.ui.form.on('Property', {
 		frm.copy_discount(frm);
 		frm.compute_total(frm);
 
+	},
+	map: function(frm){
+		// console.log(JSON.parse(frm.doc.map))
+		let mapdata = JSON.parse(cur_frm.doc.map).features[0];
+		if(mapdata && mapdata.geometry.type=='Point'){
+			let lat = mapdata.geometry.coordinates[1];
+			let lon = mapdata.geometry.coordinates[0];
+			// console.log(lat, lon)
+			// MAKE AN API call
+			frappe.call({
+				type:"GET",
+				url:`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`, //dotted path to server method
+				callback: function(r) {
+					// code snippet
+					// console.log(r);
+					// SET DOC ADDRESS
+					frm.set_value('address', r.display_name);
+				}
+			});
+			
+		}
 	}
 });
 
